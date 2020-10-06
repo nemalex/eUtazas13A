@@ -32,6 +32,7 @@ export default class Content {
 
         // Egyszerű üzenet megjelenítése a weboldalom
         res.write("Próba\n");
+        res.write("Próba2\n");
 
         // Ez egy egysoros megjegyzés
         /* Ez
