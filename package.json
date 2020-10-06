@@ -1,7 +1,7 @@
 {
-    "name": "jedlik-typescript-vscode-template",
+    "name": "utazas13a-typescript",
     "version": "1.0.0",
-    "description": "Jedlik project template for using TypeScript, Jest and Node.js in VS Code.",
+    "description": "Utazás feladat megoldása.",
     "engines": {
         "node": "13.x"
     },
@@ -9,7 +9,7 @@
     "repository": {
         "private": true,
         "type": "git",
-        "url": "https://github.com/nitslaszlo/JedlikTsTemplate"
+        "url": "https://github.com/nemalex/eUtazas13A"
     },
     "scripts": {
         "start": "node ./dist/App.js",
@@ -20,7 +20,7 @@
         "test": "jest || ECHO.",
         "dev": "nodemon"
     },
-    "author": "Nits László",
+    "author": "Németh Alex",
     "license": "MIT",
     "dependencies": {
         "tslib": "^2.0.1"
