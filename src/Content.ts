@@ -1,5 +1,6 @@
 ﻿import fs from "fs";
 import http from "http";
+import Megoldás from "./Megoldás";
 
 export default class Content {
     public content(req: http.IncomingMessage, res: http.ServerResponse): void {
@@ -16,11 +17,23 @@ export default class Content {
         res.write("<head>");
         res.write("<style>input, pre {font-family:monospace; font-size:1em; font-weight:bold;}</style>");
         res.write("<meta name='viewport' content='width=device-width, initial-scale=1.0'>");
-        res.write("<title>Jedlik Ts Template</title>");
+        res.write("<title>eUtazás</title>");
         res.write("</head>");
         res.write("<body><form><pre class='m-3'>");
 
         // Kezd a kódolást innen -->
+
+        //1. feladat - adatok beolvasása tárolása
+        const megold: Megoldás = new Megoldás("utasadat.txt");
+
+        //2. feladat
+        res.write(`2. feladat\nA buszra ${megold.felszállókSzáma} utas akart felszállni.\n`);
+
+        //3. feladat
+        res.write(`3. feladat\nA buszra ${megold.érvénytelenFelszállás} utas nem szállhatott fel.`);
+
+        //4.feladat
+        res.write(`4. feladat\nA legtöbb utas (${megold.maxKeresArray.maxFelszállók} fő) a ${megold.maxKeresArray.maxElsőMegálló} megállóban próbált felszállni.\n`);
 
         // <---- Fejezd be a kódolást
 
