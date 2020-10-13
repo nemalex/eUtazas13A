@@ -1,3 +1,4 @@
+import { features } from "process";
 import Felszállás from "./Felszállás";
 
 export default class FelszállásBérlet extends Felszállás {
@@ -8,6 +9,18 @@ export default class FelszállásBérlet extends Felszállás {
         //const érvényességLejár: number = this._érvényes.valueOf() + 24 * 60 * 60 * 1000; // egy napnyi ezred másodperc hozzáadása
         //return this._idő.valueOf() < érvényességLejár;
         return this._idő < this._érvényes;
+    }
+
+    public get kedvezményesUtazás(): boolean {
+        return this.érvényesFelszállás && ["TAB", "NYB"].includes(this._típus);
+    }
+
+    public get ingyenesUtazás(): boolean {
+        return this.érvényesFelszállás && ["NYP", "RVS", "GYK"].includes(this._típus);
+    }
+
+    public get lejárHáromNap(): boolean {
+        return this.érvényesFelszállás && Felszállás.napokszama(this._idő.getFullYear(), this._idő.getMonth() + 1, this._idő.getDay(), this._érvényes.getFullYear(), this._érvényes.getMonth() + 1, this._érvényes.getDay()) <= 3;
     }
 
     constructor(sor: string) {

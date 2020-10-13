@@ -28,11 +28,39 @@ export default class Megoldás {
         max.maxFelszállók = Math.max(...statArray);
         for (const i in statArray) {
             if (statArray[i] === max.maxFelszállók) {
-                max.maxFelszállók = parseInt(i);
+                max.maxElsőMegálló = parseInt(i);
                 break;
             }
         }
         return max;
+    }
+
+    public get maxKeresMap(): Imaxkeresés {
+        const max: Imaxkeresés = { maxFelszállók: -1, maxElsőMegálló: -1 };
+        const statMap: Map<number, number> = new Map<number, number>();
+        this._utasAdatok.forEach(i => {
+            if (statMap.has(i.megállóSorszáma)) {
+                statMap.set(i.megállóSorszáma, (statMap.get(i.megállóSorszáma) as number) + 1);
+            } else {
+                statMap.set(i.megállóSorszáma, 1);
+            }
+        });
+        max.maxFelszállók = Math.max(...statMap.values());
+        for (const [key, value] of statMap) {
+            if (value === max.maxFelszállók) {
+                max.maxElsőMegálló = key;
+                break;
+            }
+        }
+        return max;
+    }
+
+    public get ingyenesenUtazók(): number {
+        return this._utasAdatok.filter(x => x.ingyenesUtazás).length;
+    }
+
+    public get kedvezményesenUtazók(): number {
+        return this._utasAdatok.filter(x => x.kedvezményesUtazás).length;
     }
 
     constructor(forrás: string) {
