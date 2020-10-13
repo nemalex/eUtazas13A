@@ -1,4 +1,3 @@
-import { features } from "process";
 import Felszállás from "./Felszállás";
 
 export default class FelszállásBérlet extends Felszállás {
