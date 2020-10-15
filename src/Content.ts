@@ -41,8 +41,8 @@ export default class Content {
         //5. feladat
         res.write(`5. feladat\nIngyenesen utazók száma: ${megold.ingyenesenUtazók} fő\nKedvezményesen utazók száma: ${megold.kedvezményesenUtazók} fő`);
 
-        //6. feladat
-        
+        //7. feladat
+        megold.figyelmeztetéseketÁllománybaÍr("figyelmeztetes.txt");
 
         // <---- Fejezd be a kódolást
 
